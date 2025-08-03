@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:type="TaskPaneApp">
+
+  <Id>8f678aca-1234-4b2e-a07a-1b17ccdd5c00</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Your Company</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Hello Word Add-in"/>
+  <Description DefaultValue="A basic Word add-in." />
+
+  <IconUrl DefaultValue="https://localhost:8000/static/word_addin/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:8000/static/word_addin/icon-80.png"/>
+
+  <SupportUrl DefaultValue="https://localhost:8000/"/>
+
+  <Hosts>
+    <Host Name="Document" />
+  </Hosts>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:8001/codergui/index/" />
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+</OfficeApp>
