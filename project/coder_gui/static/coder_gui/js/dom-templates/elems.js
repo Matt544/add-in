@@ -1,6 +1,7 @@
 "use strict";
 
-import * as constants from '../modules/UI/constants.js';   // change location, not in modules
+import * as constants from '../modules/constants.js';   // change location, not in modules
+import * as utils from '../modules/UI/utils.js';   // change location, not in modules
 
 
 export function initialHtml() {
@@ -18,22 +19,57 @@ export function initialHtml() {
 }
 
 
-export function newVarHtml() {  // varEditSectionHtml
-  // inner html of VAR_EDIT_SECTION_ID
+export function editVarHtml() {
+  // For inner html of VAR_EDIT_SECTION_ID
   const idBase = constants.VAR1_ID_BASE;
+  // // e.g. var1-name-input
+  // const nameInputId = `${constants.VAR1_ID_BASE}-${constants.NAME_INPUT_SUFFIX}`;
+  // // e.g. var1-type-input
+  // const typeInputId = `${constants.VAR1_ID_BASE}-${constants.NAME_INPUT_SUFFIX}`;
+  // // helper for these? Used elsewhere
+
+  const [nameInputId, typeInputId] = utils.getVarNameAndTypeInputIds(
+    constants.VAR1_ID_BASE
+  );
+  const [nameLabelId, typeLabelId] = utils.getVarNameAndTypeLabelIds(
+    constants.VAR1_ID_BASE
+  )
 
   return `
-    <label for="${idBase}-name">Variable name</label>
-    <input type="text" name="${idBase}-name" id="${idBase}-name">
-    <label for="${idBase}-type">Variable type</label>
-    <input type="text" name="${idBase}-type" id="${idBase}-type"></input>
+    <label for="${nameInputId}" id="${nameLabelId}">Variable name</label>
+    <input type="text" name="${nameInputId}" id="${nameInputId}">
+
+    <label for="${typeInputId}" id="${typeLabelId}">Variable type</label>
+    <input type="text" name="${typeInputId}" id="${typeInputId}"></input>
     
     ${button(constants.ADD_EXPRESSION_BTN_ID, 'Insert expression')}
   `;
 }
 
 
-export function editVarHtml({varName, varType}) {  // Edit expression?
+export function editExpressionHtml({varName, varType}) {
+  // For inner html of VAR_EDIT_SECTION_ID
+  // const idBase = constants.VAR1_ID_BASE;
+  // // e.g. var1-name-input
+  // const nameInputId = `${constants.VAR1_ID_BASE}-${constants.NAME_INPUT_SUFFIX}`;
+  // // e.g. var1-type-input
+  // const typeInputId = `${constants.VAR1_ID_BASE}-${constants.NAME_INPUT_SUFFIX}`;
+  // helper for these? Used elsewhere
+  // doc that the value contains input but it may not be for an input elem. Could be the
+  // div displaying the value that was previously inputted.
+
+  const [nameInputId, typeInputId] = utils.getVarNameAndTypeInputIds(
+    constants.VAR1_ID_BASE
+  );
+
+  // nameInputId -> Id ?? Not just used for name attr?
+
+  // const nameLabelId = `${constants.VAR1_ID_BASE}-${constants.NAME_LEBEL_SUFFIX}`;
+  // const typeLabelId = `${constants.VAR1_ID_BASE}-${constants.TYPE_LEBEL_SUFFIX}`;
+  const [nameLabelId, typeLabelId] = utils.getVarNameAndTypeLabelIds(
+    constants.VAR1_ID_BASE
+  )
+
   return `
     <h1>Edit expression</h1>
     <section id="${ constants.VAR_SECTION_ID }">
@@ -42,10 +78,11 @@ export function editVarHtml({varName, varType}) {  // Edit expression?
       ${button("", 'Use a different variable')}
       
       <section class="" id="${ constants.VAR_DETAIL_SECTION_ID }">
-        <div>Variable name</div>
-        <div>${varName}</div>
-        <div>Variable type</div>
-        <div>${varType}</div>
+        <div id="${nameLabelId}">Variable name</div>
+        <div id="${nameInputId}">${varName}</div>
+
+        <div id="${typeLabelId}">Variable type</div>
+        <div id="${typeInputId}">${varType}</div>
       </section>
 
       <section class="" id="${ constants.VAR_EDIT_SECTION_ID }"></section>
@@ -62,75 +99,6 @@ export function editVarHtml({varName, varType}) {  // Edit expression?
       <p>Add filters to modify the variable</p>
     </section>
   `;
-
-  // let html = `<h1>Edit expression</h1>`;
-  // html += `<h2>Variable</h2>`  // kind of hard coding this structure
-  // html += elems.button("", 'Edit variable');
-  // html += elems.button("", 'Use a different variable');
-  // html += elems.varNameDisplay(varName);
-  // html += elems.varTypeDisplay(varType);
-
-  // html += `<h2>Function</h2>`
-  // html += `<p>Choose a function to do something with the variable</p>`
-
-  // html += `<h2>Filters</h2>`
-  // html += `<p>Add filters to modify the variable</p>`
-
-  // return html;
-}
-
-
-/**
- * 
- * <h1>Edit expression</h1>
- * <h2>Variable</h2>
- * <button>Edit var</button>
- * <button>Use different var</button>
- * <section id="var-section">
- *  <div>Variable name</div>
- *  <div>${name}</div>
- *  <div>Variable type</div>
- *  <div>${type}</div>
- * </section>
- * 
- * <section class="d-none" id="function-section">
- * ...
- * </section>
- * <section class="d-none" id="filter-section">
- * ...
- * </section>
- * 
- */
-
-
-export function varNameInput(idBase) {  // needed?
-  return `
-    <label for="${idBase}-name">Variable name</label>
-    <input type="text" name="${idBase}-name" id="${idBase}-name">
-  `
-}
-
-
-export function varTypeInput(idBase) {  // needed?
-  return `
-    <label for="${idBase}-type">Variable type</label>
-    <input type="text" name="${idBase}-type" id="${idBase}-type"></input>
-  `
-}
-
-export function varNameDisplay(varName) {  // needed?
-  return `
-    <div>Variable name</div>
-    <div>${varName}</div>
-  `
-}
-
-
-export function varTypeDisplay(varType) {  // needed?
-  return `
-    <div>Variable type</div>
-    <div>${varType}</div>
-  `
 }
 
 

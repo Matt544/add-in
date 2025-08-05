@@ -1,6 +1,6 @@
 "use strict";
 
-import * as constants from './constants.js';
+import * as constants from '../constants.js';
 import * as docx from '../docx/docx.js';
 import * as editExpressionUI from './edit-expression-ui.js';
 import * as utils from './utils.js';
@@ -8,13 +8,10 @@ import * as elems from '../../dom-templates/elems.js';
 
 
 export function init() {
-  // Note: If going between tabs, work will be lost. Not ideal.
+  // Note: If going between tabs, will work be lost? Not ideal.
   utils.replaceContainerContent(
     constants.VAR_EDIT_SECTION_ID,
-    // elems.newVarHtml( 
-    //   { idBase: constants.VAR1_ID_BASE, addBtnId: constants.ADD_EXPRESSION_BTN_ID }
-    // ),
-    elems.newVarHtml(),
+    elems.editVarHtml(),
   );
 
   utils.reveal(`#${constants.VAR_EDIT_SECTION_ID}`);
@@ -23,16 +20,6 @@ export function init() {
   const addExpressionBtn = document.querySelector(`#${constants.ADD_EXPRESSION_BTN_ID}`);
   addExpressionBtn.addEventListener('click', addExpressionHandler);
 }
-
-
-// function newVarHtml({idBase, addBtnId}) {
-//   let html = ``;
-//   html += elems.varNameInput(idBase);
-//   html += elems.varTypeInput(idBase);
-//   html += elems.button(addBtnId, 'Insert expression');
-
-//   return html;
-// }
 
 
 function addExpressionHandler(e) {
@@ -52,12 +39,16 @@ function addExpressionHandler(e) {
 
 
 function getVarNameAndType(e) {
-  const varName = e.target.parentElement.querySelector(
-    `[name=${constants.VAR1_ID_BASE}-name]`
-  ).value;
-  const varType = e.target.parentElement.querySelector(
-    `[name=${constants.VAR1_ID_BASE}-type]`
-  ).value;
+  const [nameInputId, typeInputId] = utils.getVarNameAndTypeInputIds(
+    constants.VAR1_ID_BASE
+  );
+
+  const varName = e.target
+    .parentElement.querySelector(`[name="${nameInputId}"]`).value;
+  const varType = e.target
+    .parentElement.querySelector(`[name="${typeInputId}"]`).value;
+
+  console.log([varName, varType]);
 
   return [varName, varType];
 }

@@ -15,3 +15,7 @@ export const FUNCTION_SECTION = 'function-section';
 export const FILTERS_SECTION = 'filters-section';
 
 export const VAR1_ID_BASE = 'var1';
+export const NAME_INPUT_SUFFIX = 'name-input'
+export const TYPE_INPUT_SUFFIX = 'type-input'
+export const NAME_LEBEL_SUFFIX = 'name-label'
+export const TYPE_LEBEL_SUFFIX = 'type-label'

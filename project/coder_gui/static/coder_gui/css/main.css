@@ -12,15 +12,19 @@ button {
 
 .d-none { display: none !important; }
 
-#new-var-ui-container {
+
+#var-edit-section,
+#var-detail-section {
   display: flex;
   flex-wrap: wrap;
 }
 
-#new-var-ui-container label {
+#var-edit-section label,
+#var-detail-section [id$="-label"] {
   width: 7rem;
 }
 
-#new-var-ui-container input {
+#var-edit-section input,
+#var-detail-section [id$="-input"] {
   width: calc(100% - 7.5rem);
 }
