@@ -2,7 +2,7 @@
 
 
 // export function replaceContainerContent(contentGetter, containerId, args = {}) {
-export function replaceContainerContent(html, containerId) {
+export function replaceContainerContent(containerId, html) {
     const container = document.getElementById(containerId);
     container.innerHTML = html;
 }

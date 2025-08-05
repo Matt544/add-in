@@ -11,3 +11,16 @@ button {
 }
 
 .d-none { display: none !important; }
+
+#new-var-ui-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#new-var-ui-container label {
+  width: 7rem;
+}
+
+#new-var-ui-container input {
+  width: calc(100% - 7.5rem);
+}
