@@ -1,0 +1,13 @@
+input[type="text"] {
+  display: block;
+}
+
+body {
+  background-color: white;  /* required to avoid vertical lines on window re-size */
+}
+
+button {
+  margin-bottom: 0.5rem;
+}
+
+.d-none { display: none !important; }
