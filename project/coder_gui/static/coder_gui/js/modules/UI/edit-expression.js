@@ -6,9 +6,15 @@ import * as utils from './utils.js';
 import * as templates from '../../dom-templates/templates.js';
 
 
-export function init(varName, varType) {
-  utils.replaceInnerHtml(
-    `#${constants.MAIN_OPERATION_SECTION_ID}`,
-    templates.editExpressionHtml({ varName: varName, varType: varType }),
-  );
+export const editExpressionPage = {
+  init(varName, varType) {
+    this._updateHtml(varName, varType);
+  },
+
+  _updateHtml(varName, varType) {
+    utils.replaceInnerHtml(
+      `#${constants.MAIN_OPERATION_SECTION_ID}`,
+      templates.editExpressionHtml({ varName: varName, varType: varType }),
+    );
+  }
 }

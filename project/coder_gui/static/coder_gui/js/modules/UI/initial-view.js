@@ -3,19 +3,28 @@
 import * as utils from "./utils.js";
 import * as constants from "./constants.js";
 import * as templates from "../../dom-templates/templates.js";
-import * as makeExpression from "./add-expression.js";
+import {addExpressionPage} from "./add-expression.js";
 
 
-export function init() {
-  utils.appendHtml("body", templates.initialHtml());
+export const initialPage = {
+  init() {
+    this._updateHtml();
+    this._preparePage();
+  },
 
-  // Attach event listeners to the 'add expression/logic' buttons
-  document
-    .getElementById(constants.MAKE_EXPRESSION_BTN_ID)
-    .addEventListener("click", makeExpressionChoiceHandler);
-  document
-    .getElementById(constants.MAKE_LOGIC_BTN_ID)
-    .addEventListener("click", makeLogicChoiceHandler);
+  _updateHtml() {
+    utils.appendHtml("body", templates.initialHtml());
+  },
+
+  _preparePage() {
+    // Attach event listeners to the 'add expression/logic' buttons
+    document
+      .getElementById(constants.MAKE_EXPRESSION_BTN_ID)
+      .addEventListener("click", makeExpressionChoiceHandler);
+    document
+      .getElementById(constants.MAKE_LOGIC_BTN_ID)
+      .addEventListener("click", makeLogicChoiceHandler);
+  }
 }
 
 
@@ -34,7 +43,7 @@ function makeExpressionChoiceHandler() {
     utils.replaceInnerHtml(btnContentPrefixSpan, "🔁 create another");
     btnContentPrefixSpan.setAttribute("data-refresh-indicator-added", "true");
   }
-  makeExpression.init();
+  addExpressionPage.init();
 }
 
 

@@ -2,25 +2,34 @@
 
 import * as constants from './constants.js';
 import * as docx from '../docx/docx.js';
-import * as editExpressionUI from './edit-expression.js';
+import {editExpressionPage} from './edit-expression.js';
 import * as utils from './utils.js';
 import * as templates from '../../dom-templates/templates.js';
 
 
-export function init() {
+export const newVarPage = {
   // Note: If going between tabs, will work be lost? Not ideal.
-  utils.replaceInnerHtml(
-    `#${constants.VAR_EDIT_SECTION_ID}`,
-    templates.editVarHtml(),
-  );
+  init() {
+    this._updateHtml();
+    this._preparePage();
+  },
 
-  utils.reveal(`#${constants.VAR_EDIT_SECTION_ID}`);
-  utils.hide(`#${constants.VAR_CHOOSE_EXISTING_SECTION_ID}`);
+  _updateHtml() {
+    utils.replaceInnerHtml(
+      `#${constants.VAR_EDIT_SECTION_ID}`,
+      templates.editVarHtml(),
+    );
+  },
 
-  const addExpressionBtn = document.querySelector(
-    `#${constants.ADD_EXPRESSION_BTN_ID}`
-  );
-  addExpressionBtn.addEventListener('click', addExpressionHandler);
+  _preparePage() {
+    utils.reveal(`#${constants.VAR_EDIT_SECTION_ID}`);
+    utils.hide(`#${constants.VAR_CHOOSE_EXISTING_SECTION_ID}`);
+
+    const addExpressionBtn = document.querySelector(
+      `#${constants.ADD_EXPRESSION_BTN_ID}`
+    );
+    addExpressionBtn.addEventListener('click', addExpressionHandler);
+  }
 }
 
 
@@ -32,7 +41,8 @@ function addExpressionHandler(e) {
   })
   .then(() => {
     // Insertion succeeded; replace the current UI with the edit expression UI
-    editExpressionUI.init(varName, varType);
+    // editExpressionUI.init(varName, varType);
+    editExpressionPage.init(varName, varType);
   })
   .catch((error) => {
     console.error("Error inserting text:", error);

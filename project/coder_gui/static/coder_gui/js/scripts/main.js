@@ -2,6 +2,6 @@
 
 
 Office.onReady(async () => {
-  const initialChoiceUI = await import('../modules/UI/initial-view.js');
-  initialChoiceUI.init();
+  const { initialPage } = await import('../modules/UI/initial-view.js');
+  initialPage.init();
 });
