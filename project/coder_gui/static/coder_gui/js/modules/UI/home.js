@@ -5,29 +5,30 @@ import * as constants from "./constants.js";
 import * as templates from "../../dom-templates/templates.js";
 import {addExpressionUI} from "./add-expression.js";
 import {mainNavUI} from "./main-nav.js";
-import {homeUI} from "./home.js";
 
 
-export const initialUI = {
+export const homeUI = {
   init() {
+    console.log("HERE");
     this._updateHtml();
-    // this._preparePage();
+    this._preparePage();
   },
 
   _updateHtml() {
-    utils.appendHtml("body", templates.initialHtml());
-    homeUI.init();
+    // utils.appendHtml("body", templates.initialHtml());
+    const parentContainer = document.getElementById(constants.PARENT_CONTAINER_ID);
+    utils.replaceInnerHtml(parentContainer, templates.home())
   },
 
-  // _preparePage() {
-  //   // Attach event listeners to the 'add expression/logic' buttons
-  //   document
-  //     .getElementById(constants.MAKE_EXPRESSION_BTN_ID)
-  //     .addEventListener("click", makeExpressionChoiceHandler);
-  //   document
-  //     .getElementById(constants.MAKE_LOGIC_BTN_ID)
-  //     .addEventListener("click", makeLogicChoiceHandler);
-  // }
+  _preparePage() {
+    // Attach event listeners to the 'add expression/logic' buttons
+    document
+      .getElementById(constants.MAKE_EXPRESSION_BTN_ID)
+      .addEventListener("click", makeExpressionChoiceHandler);
+    document
+      .getElementById(constants.MAKE_LOGIC_BTN_ID)
+      .addEventListener("click", makeLogicChoiceHandler);
+  }
 }
 
 

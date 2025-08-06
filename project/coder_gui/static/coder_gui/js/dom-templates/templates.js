@@ -6,14 +6,26 @@ import * as utils from '../modules/UI/utils.js';
 
 export function initialHtml() {
   return `
-    <div id="${constants.PARENT_CONTAINER_ID}">
-      <div id="${constants.MAKE_EXPRESSION_OR_LOGIC_BTNS_HOLDER_ID}">
-        <span id="${constants.MAKE_EXPRESSION_OR_LOGIC_BTNS_PREFIX_ID}">Create</span>
-        ${button(constants.MAKE_EXPRESSION_BTN_ID, 'expression')}
-        ${button(constants.MAKE_LOGIC_BTN_ID, 'logic block')}
-      </div>
-      <div id="${constants.MAIN_OPERATION_SECTION_ID}"></div>
+    <div id="${constants.PARENT_CONTAINER_ID}"></div>
+  `;
+}
+
+
+export function home() {
+  return `
+    <div id="${constants.MAKE_EXPRESSION_OR_LOGIC_BTNS_HOLDER_ID}">
+      <span id="${constants.MAKE_EXPRESSION_OR_LOGIC_BTNS_PREFIX_ID}">Create</span>
+      ${button(constants.MAKE_EXPRESSION_BTN_ID, 'expression')}
+      ${button(constants.MAKE_LOGIC_BTN_ID, 'logic block')}
     </div>
+    <div id="${constants.MAIN_OPERATION_SECTION_ID}"></div>
+  `;
+}
+
+
+export function mainNav() {
+  return `
+    ${button(constants.HOME_BTN_ID, "Home")}
   `;
 }
 

@@ -9,6 +9,8 @@ export const MAKE_EXPRESSION_OR_LOGIC_BTNS_PREFIX_ID = 'make-expression-or-logic
 // Currently only used for css
 export const MAKE_EXPRESSION_OR_LOGIC_BTNS_HOLDER_ID = 'make-expression-or-logic-holder'
 
+export const HOME_BTN_ID = 'home-btn';
+
 export const ADD_EXPRESSION_BTN_ID = 'add-expression-btn';  // insert?
 
 export const CREATE_NEW_VAR_BTN_ID = 'create-new-var-btn';
