@@ -2,7 +2,7 @@
 
 import * as constants from './constants.js';
 import * as docx from '../docx/docx.js';
-import * as editExpressionUI from './edit-expression-ui.js';
+import * as editExpressionUI from './edit-expression.js';
 import * as utils from './utils.js';
 import * as templates from '../../dom-templates/templates.js';
 

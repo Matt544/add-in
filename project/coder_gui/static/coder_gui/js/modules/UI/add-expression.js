@@ -3,7 +3,7 @@
 import * as utils from "./utils.js";
 import * as constants from "./constants.js";
 import * as templates from "../../dom-templates/templates.js";
-import * as newVarUI from "./new-var-ui.js";
+import * as newVarUI from "./new-var.js";
 
 export function init() {
   utils.replaceInnerHtml(
