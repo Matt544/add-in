@@ -2,12 +2,12 @@
 
 import * as constants from './constants.js';
 import * as docx from '../docx/docx.js';
-import {editExpressionPage} from './edit-expression.js';
+import {editExpressionUI} from './edit-expression.js';
 import * as utils from './utils.js';
 import * as templates from '../../dom-templates/templates.js';
 
 
-export const newVarPage = {
+export const newVarUI = {
   // Note: If going between tabs, will work be lost? Not ideal.
   init() {
     this._updateHtml();
@@ -42,7 +42,7 @@ function addExpressionHandler(e) {
   .then(() => {
     // Insertion succeeded; replace the current UI with the edit expression UI
     // editExpressionUI.init(varName, varType);
-    editExpressionPage.init(varName, varType);
+    editExpressionUI.init(varName, varType);
   })
   .catch((error) => {
     console.error("Error inserting text:", error);

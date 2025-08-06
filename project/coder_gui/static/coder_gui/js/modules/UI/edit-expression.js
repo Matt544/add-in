@@ -6,7 +6,7 @@ import * as utils from './utils.js';
 import * as templates from '../../dom-templates/templates.js';
 
 
-export const editExpressionPage = {
+export const editExpressionUI = {
   init(varName, varType) {
     this._updateHtml(varName, varType);
   },

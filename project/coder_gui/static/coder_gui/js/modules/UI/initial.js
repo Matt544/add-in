@@ -3,10 +3,10 @@
 import * as utils from "./utils.js";
 import * as constants from "./constants.js";
 import * as templates from "../../dom-templates/templates.js";
-import {addExpressionPage} from "./add-expression.js";
+import {addExpressionUI} from "./add-expression.js";
 
 
-export const initialPage = {
+export const initialUI = {
   init() {
     this._updateHtml();
     this._preparePage();
@@ -43,7 +43,7 @@ function makeExpressionChoiceHandler() {
     utils.replaceInnerHtml(btnContentPrefixSpan, "🔁 create another");
     btnContentPrefixSpan.setAttribute("data-refresh-indicator-added", "true");
   }
-  addExpressionPage.init();
+  addExpressionUI.init();
 }
 
 

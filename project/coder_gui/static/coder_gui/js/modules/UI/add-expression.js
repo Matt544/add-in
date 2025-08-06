@@ -3,10 +3,10 @@
 import * as utils from "./utils.js";
 import * as constants from "./constants.js";
 import * as templates from "../../dom-templates/templates.js";
-import {newVarPage} from "./new-var.js";
+import {newVarUI} from "./new-var.js";
 
 
-export const addExpressionPage = {
+export const addExpressionUI = {
   init() {
     this._updateHtml();
     this._preparePage();
@@ -31,7 +31,7 @@ export const addExpressionPage = {
 
 
 function addNewVarChoiceHandler() {
-  newVarPage.init();
+  newVarUI.init();
 }
 
 
