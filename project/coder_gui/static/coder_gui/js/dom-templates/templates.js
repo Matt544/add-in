@@ -13,21 +13,45 @@ export function initialHtml() {
 
 export function home() {
   return `
-    <div id="${constants.MAKE_EXPRESSION_OR_LOGIC_BTNS_HOLDER_ID}">
-      <span id="${constants.MAKE_EXPRESSION_OR_LOGIC_BTNS_PREFIX_ID}">Create</span>
+    <div id="${constants.BREADCRUMB_HOLDER_ID}">
+    </div>
+    <div id="${constants.MAIN_OPERATION_SECTION_ID}">
+      Create
       ${button(constants.MAKE_EXPRESSION_BTN_ID, 'expression')}
       ${button(constants.MAKE_LOGIC_BTN_ID, 'logic block')}
     </div>
-    <div id="${constants.MAIN_OPERATION_SECTION_ID}"></div>
   `;
 }
 
 
-export function mainNav() {
-  return `
-    ${button(constants.HOME_BTN_ID, "Home")}
-  `;
+export function breadcrumb(pathKeys) {  // pathKeys keys
+  let htmlParts = [];
+
+  if (pathKeys.length > 1) {
+    const linkedPath = pathKeys.slice(0, -1);
+
+    for (const key of linkedPath) {  // NEED TO USE SEGMENET!
+      // segment is a key. clarify that.
+      const id = constants.PATH_MAP[key].id;
+      const text = constants.PATH_MAP[key].text;
+      htmlParts.push(`${button(id, text)}`);
+    }  // need to map id and segment
+  }
+
+  const lastKey = pathKeys[pathKeys.length - 1];  // KEY
+  htmlParts.push(constants.PATH_MAP[lastKey].text);
+
+  const html = htmlParts.join("/");
+
+  return html;
 }
+
+// // path should be 
+// let path = [UI_key]
+// let pathMap = {
+//   UI_key1: {"textValue": "tv", "id": "ID"},
+//   UI_key2: {"textValue": "tv", "id": "ID"},
+// }
 
 
 export function addExpressionHtml() {
@@ -61,7 +85,7 @@ export function editVarHtml() {
     <label for="${typeInputId}" id="${typeLabelId}">Variable type</label>
     <input type="text" name="${typeInputId}" id="${typeInputId}"></input>
     
-    ${button(constants.ADD_EXPRESSION_BTN_ID, 'Insert expression')}
+    ${button(constants.INSERT_EXPRESSION_BTN_ID, 'Insert expression')}
   `;
 }
 

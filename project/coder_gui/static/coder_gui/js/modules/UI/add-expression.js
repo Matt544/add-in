@@ -4,6 +4,7 @@ import * as utils from "./utils.js";
 import * as constants from "./constants.js";
 import * as templates from "../../dom-templates/templates.js";
 import {newVarUI} from "./new-var.js";
+import {breadcrumbUI} from "./breadcrumb.js";
 
 
 export const addExpressionUI = {
@@ -17,6 +18,7 @@ export const addExpressionUI = {
       `#${constants.MAIN_OPERATION_SECTION_ID}`,
       templates.addExpressionHtml(),
     );
+    breadcrumbUI.init([constants.HOME_PATH_KEY, constants.CREATE_EXPRESSION_PATH_KEY]);
   },
 
   _preparePage() {

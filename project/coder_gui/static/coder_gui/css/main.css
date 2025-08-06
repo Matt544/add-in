@@ -29,6 +29,6 @@ button {
   width: calc(100% - 7.5rem);
 }
 
-#make-expression-or-logic-holder {
+#breadcrumb-holder {
     border-bottom: 1px solid;
 }
