@@ -1,8 +1,16 @@
 "use strict";
 
 export const PARENT_CONTAINER_ID = 'container';
+export const MAIN_OPERATION_SECTION_ID = 'main-operation-section';
 
-export const ADD_EXPRESSION_BTN_ID = 'add-expression-btn';
+export const MAKE_EXPRESSION_BTN_ID = 'make-expression-btn';
+export const MAKE_LOGIC_BTN_ID = 'make-logic-btn';
+export const MAKE_EXPRESSION_OR_LOGIC_BTNS_PREFIX_ID = 'make-expression-or-logic-prefix'
+// Currently only used for css
+export const MAKE_EXPRESSION_OR_LOGIC_BTNS_HOLDER_ID = 'make-expression-or-logic-holder'
+
+export const ADD_EXPRESSION_BTN_ID = 'add-expression-btn';  // insert?
+
 export const CREATE_NEW_VAR_BTN_ID = 'create-new-var-btn';
 export const USE_EXISTING_VAR_BTN_ID = 'use-existing-var-btn';
 

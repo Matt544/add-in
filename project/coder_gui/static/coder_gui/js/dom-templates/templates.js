@@ -1,16 +1,30 @@
 "use strict";
 
-import * as constants from '../modules/constants.js';   // change location, not in modules
-import * as utils from '../modules/UI/utils.js';   // change location, not in modules
+import * as constants from '../modules/UI/constants.js';
+import * as utils from '../modules/UI/utils.js';
 
 
 export function initialHtml() {
   return `
+    <div id="${constants.PARENT_CONTAINER_ID}">
+      <div id="${constants.MAKE_EXPRESSION_OR_LOGIC_BTNS_HOLDER_ID}">
+        <span id="${constants.MAKE_EXPRESSION_OR_LOGIC_BTNS_PREFIX_ID}">Create</span>
+        ${button(constants.MAKE_EXPRESSION_BTN_ID, 'expression')}
+        ${button(constants.MAKE_LOGIC_BTN_ID, 'logic block')}
+      </div>
+      <div id="${constants.MAIN_OPERATION_SECTION_ID}"></div>
+    </div>
+  `;
+}
+
+
+export function addExpressionHtml() {
+  return `
     <h1>Add new expression</h1>
     <section id="${ constants.VAR_SECTION_ID }">
       <h2>Variable</h2>
-      <button id="${constants.CREATE_NEW_VAR_BTN_ID}">Create a new variable</button>
-      <button id="${constants.USE_EXISTING_VAR_BTN_ID}">Use an existing variable</button>
+      ${button(constants.CREATE_NEW_VAR_BTN_ID, 'Create a new variable')}
+      ${button(constants.USE_EXISTING_VAR_BTN_ID, 'Use an existing variable')}
 
       <section class="" id="${constants.VAR_EDIT_SECTION_ID}"></section>
       <section class="" id="${constants.VAR_CHOOSE_EXISTING_SECTION_ID}""></section>
@@ -21,13 +35,6 @@ export function initialHtml() {
 
 export function editVarHtml() {
   // For inner html of VAR_EDIT_SECTION_ID
-  const idBase = constants.VAR1_ID_BASE;
-  // // e.g. var1-name-input
-  // const nameInputId = `${constants.VAR1_ID_BASE}-${constants.NAME_INPUT_SUFFIX}`;
-  // // e.g. var1-type-input
-  // const typeInputId = `${constants.VAR1_ID_BASE}-${constants.NAME_INPUT_SUFFIX}`;
-  // // helper for these? Used elsewhere
-
   const [nameInputId, typeInputId] = utils.getVarNameAndTypeInputIds(
     constants.VAR1_ID_BASE
   );
@@ -48,28 +55,13 @@ export function editVarHtml() {
 
 
 export function editExpressionHtml({varName, varType}) {
-  // For inner html of VAR_EDIT_SECTION_ID
-  // const idBase = constants.VAR1_ID_BASE;
-  // // e.g. var1-name-input
-  // const nameInputId = `${constants.VAR1_ID_BASE}-${constants.NAME_INPUT_SUFFIX}`;
-  // // e.g. var1-type-input
-  // const typeInputId = `${constants.VAR1_ID_BASE}-${constants.NAME_INPUT_SUFFIX}`;
-  // helper for these? Used elsewhere
-  // doc that the value contains input but it may not be for an input elem. Could be the
-  // div displaying the value that was previously inputted.
-
   const [nameInputId, typeInputId] = utils.getVarNameAndTypeInputIds(
     constants.VAR1_ID_BASE
   );
-
-  // nameInputId -> Id ?? Not just used for name attr?
-
-  // const nameLabelId = `${constants.VAR1_ID_BASE}-${constants.NAME_LEBEL_SUFFIX}`;
-  // const typeLabelId = `${constants.VAR1_ID_BASE}-${constants.TYPE_LEBEL_SUFFIX}`;
   const [nameLabelId, typeLabelId] = utils.getVarNameAndTypeLabelIds(
     constants.VAR1_ID_BASE
   )
-
+  
   return `
     <h1>Edit expression</h1>
     <section id="${ constants.VAR_SECTION_ID }">

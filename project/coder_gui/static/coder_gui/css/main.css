@@ -28,3 +28,7 @@ button {
 #var-detail-section [id$="-input"] {
   width: calc(100% - 7.5rem);
 }
+
+#make-expression-or-logic-holder {
+    border-bottom: 1px solid;
+}
